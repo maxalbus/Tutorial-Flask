@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Gerenciador de Tarefas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <main class="container centralizado">
+        <section class="card formulario">
+            <a class="voltar" href="/">← Voltar</a>
+            <h1>Entrar</h1>
+            <p class="subtitulo">Acesse seu gerenciador de tarefas.</p>
+
+            <form onsubmit="entrar(event)">
+                <label for="email">E-mail</label>
+                <input id="email" type="email" placeholder="seu@email.com" required>
+
+                <label for="senha">Senha</label>
+                <input id="senha" type="password" placeholder="Sua senha" required>
+
+                <button class="botao principal" type="submit">Entrar</button>
+            </form>
+
+            <p id="mensagem" class="mensagem"></p>
+        </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
