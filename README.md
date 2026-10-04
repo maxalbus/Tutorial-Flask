@@ -45,6 +45,38 @@ As tarefas são armazenadas em memória no JavaScript e não são persistidas em
 
 ## Como executar
 
+Este protótipo está na branch:
+
+prototipo-visual
+
+No computador, não existe uma pasta exclusiva para esta branch. O repositório possui uma única pasta local:
+
+Tutorial-Flask/
+
+Quando a branch prototipo-visual está selecionada, o Git coloca nessa pasta os arquivos pertencentes a esta versão.
+
+Para conferir a branch atual:
+
+git branch --show-current
+
+O resultado deve ser:
+
+prototipo-visual
+
+Importante
+
+A mesma pasta local também pode ser utilizada para a branch funcional.
+
+Para trocar para a versão funcional:
+
+git checkout prototipo-funcional
+
+Para voltar à versão visual:
+
+git checkout prototipo-visual
+
+Portanto, é importante conferir a branch atual antes de executar a aplicação.
+
 ### 1. Criar o ambiente virtual
 
 ```bash
