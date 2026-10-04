@@ -126,6 +126,32 @@ A tabela de tarefas possui relações com os usuários responsáveis pela criaç
 
 ## Como executar
 
+Esta implementação está na branch:
+
+prototipo-funcional
+
+O repositório não possui uma pasta física diferente para cada branch. Existe uma única pasta local:
+
+Tutorial-Flask/
+
+O Git altera o conteúdo dessa pasta de acordo com a branch selecionada.
+
+Para conferir qual branch está ativa:
+
+git branch --show-current
+
+O resultado esperado para esta versão é:
+
+prototipo-funcional
+
+Para trocar para a versão visual:
+
+git checkout prototipo-visual
+
+Para voltar à versão funcional:
+
+git checkout prototipo-funcional
+
 ### 1. Criar o ambiente virtual
 
 ```bash
