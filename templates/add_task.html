@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Nova tarefa | Gerenciador de tarefas{% endblock %}
+
+{% block content %}
+    <div class="row justify-content-center">
+        <section class="col-lg-8">
+            <h1 class="h3 mb-4">Nova tarefa</h1>
+            <form action="{{ url_for('add_task') }}" method="post">
+                <div class="mb-3">
+                    <label class="form-label" for="title">Título</label>
+                    <input
+                        class="form-control"
+                        id="title"
+                        name="title"
+                        type="text"
+                        maxlength="200"
+                        value="{{ form_data.get('title', '') }}"
+                        required
+                    >
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="description">Descrição</label>
+                    <textarea class="form-control" id="description" name="description" rows="4">{{ form_data.get('description', '') }}</textarea>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="status">Status</label>
+                    <select class="form-select" id="status" name="status" required>
+                        {% for status in statuses %}
+                            <option value="{{ status }}" {% if form_data.get('status', 'pending') == status %}selected{% endif %}>{{ status }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label" for="shared_with">Compartilhar com</label>
+                    <select class="form-select" id="shared_with" name="shared_with">
+                        <option value="">Não compartilhar</option>
+                        {% for user in users %}
+                            <option value="{{ user.id }}" {% if form_data.get('shared_with', '') == user.id|string %}selected{% endif %}>{{ user.username }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="d-flex flex-wrap gap-2">
+                    <button class="btn btn-primary" type="submit">Salvar tarefa</button>
+                    <a class="btn btn-outline-secondary" href="{{ url_for('dashboard') }}">Voltar ao dashboard</a>
+                </div>
+            </form>
+        </section>
+    </div>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Painel administrativo | Gerenciador de tarefas{% endblock %}
+
+{% block content %}
+    <h1 class="h3 mb-4">Painel administrativo</h1>
+
+    {% if tasks %}
+        <div class="table-responsive">
+            <table class="table table-striped align-middle">
+                <thead>
+                    <tr>
+                        <th scope="col">Título</th>
+                        <th scope="col">Descrição</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Criador</th>
+                        <th scope="col">Compartilhada com</th>
+                        <th scope="col">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for task in tasks %}
+                        <tr>
+                            <th scope="row">{{ task.title }}</th>
+                            <td>{{ task.description }}</td>
+                            <td>{{ task.status }}</td>
+                            <td>{{ task.creator.username }}</td>
+                            <td>
+                                {% if task.recipient %}
+                                    {{ task.recipient.username }}
+                                {% else %}
+                                    Não compartilhada
+                                {% endif %}
+                            </td>
+                            <td>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <a class="btn btn-sm btn-outline-primary" href="{{ url_for('edit_task', task_id=task.id) }}">Editar</a>
+                                    <form class="m-0" action="{{ url_for('delete_task', task_id=task.id) }}" method="post" onsubmit="return confirm('Tem certeza que deseja excluir esta tarefa?');">
+                                        <button class="btn btn-sm btn-outline-danger" type="submit">Excluir</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <p class="text-body-secondary">Nenhuma tarefa cadastrada.</p>
+    {% endif %}
+{% endblock %}
